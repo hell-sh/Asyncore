@@ -17,7 +17,10 @@ abstract class stdin
 	 */
 	static function init(?callable $line_function = null): void
 	{
-		pas::on("stdin_line", $line_function);
+		if($line_function !== null)
+		{
+			pas::on("stdin_line", $line_function);
+		}
 		if(self::$initialized)
 		{
 			return;
