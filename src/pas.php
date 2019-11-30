@@ -209,12 +209,12 @@ abstract class pas
 			curl_multi_exec($mh, $active);
 			if($active == 0)
 			{
-				$callback(curl_multi_getcontent($ch));
+				$loop->remove();
 				curl_multi_remove_handle($mh, $ch);
 				curl_multi_close($mh);
-				$loop->remove();
+				$callback(curl_multi_getcontent($ch));
 			}
-		}, 0.005, true);
+		}, 0.001, true);
 	}
 
 	/**
