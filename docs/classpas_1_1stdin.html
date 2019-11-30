@@ -75,8 +75,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a8a85c928a26b0bf780133f85741cce9b"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1stdin.html#a8a85c928a26b0bf780133f85741cce9b">init</a> (?callable $line_function=null)</td></tr>
-<tr class="separator:a8a85c928a26b0bf780133f85741cce9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a645a60e1743a2bd7e42cd2f0334e7fed"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1stdin.html#a645a60e1743a2bd7e42cd2f0334e7fed">init</a> (?callable $line_function=null, bool $essential=true)</td></tr>
+<tr class="separator:a645a60e1743a2bd7e42cd2f0334e7fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5a8b6f59a98a3399f5940b9ab380363"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1stdin.html#ad5a8b6f59a98a3399f5940b9ab380363">getNextLine</a> ()</td></tr>
 <tr class="separator:ad5a8b6f59a98a3399f5940b9ab380363"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -114,8 +114,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8a85c928a26b0bf780133f85741cce9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a85c928a26b0bf780133f85741cce9b">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a645a60e1743a2bd7e42cd2f0334e7fed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a645a60e1743a2bd7e42cd2f0334e7fed">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,8 +127,18 @@ Static Public Member Functions</h2></td></tr>
           <td class="memname">static pas\stdin::init </td>
           <td>(</td>
           <td class="paramtype">?callable&#160;</td>
-          <td class="paramname"><em>$line_function</em> = <code>null</code></td><td>)</td>
+          <td class="paramname"><em>$line_function</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>$essential</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -141,6 +151,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype">callable&#160;|&#160;null</td><td class="paramname">$line_function</td><td>The function to be called when the user has submitted a line. </td></tr>
+    <tr><td class="paramtype">bool</td><td class="paramname">$essential</td><td>If false, the STDIN loop will be registered as inessential, so it doesn't prevent <a class="el" href="classpas_1_1pas.html#ace9c5ce9a5eadc39d38607b91fd91c18">pas::loop()</a> from returning. </td></tr>
   </table>
   </dd>
 </dl>
