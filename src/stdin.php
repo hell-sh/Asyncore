@@ -13,9 +13,10 @@ abstract class stdin
 	 * After this, STDIN is in pas's hands, and there's no way out.
 	 *
 	 * @param callable|null $line_function The function to be called when the user has submitted a line.
+	 * @param bool $essential If false, the STDIN loop will be registered as inessential, so it doesn't prevent pas::loop() from returning.
 	 * @return void
 	 */
-	static function init(?callable $line_function = null): void
+	static function init(?callable $line_function = null, bool $essential = true): void
 	{
 		if($line_function !== null)
 		{
@@ -33,13 +34,15 @@ abstract class stdin
 		{
 			stream_set_blocking(STDIN, false);
 		}
-		pas::add(function()
-		{
-			while(self::hasLine())
+		call_user_func_array(pas::class."::add".($essential ? "" : "Inessential"), [
+			function()
 			{
-				pas::fire("stdin_line", [self::getLine()]);
-			}
-		}, 0.1, true);
+				while(self::hasLine())
+				{
+					pas::fire("stdin_line", [self::getLine()]);
+				}
+			}, 0.1, true
+		]);
 		self::$initialized = true;
 	}
 
