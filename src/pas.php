@@ -139,7 +139,7 @@ abstract class pas
 			if(self::$recalculate_loops)
 			{
 				$loops = self::$conditions[0]->loops;
-				for($i = 2; $i < count(self::$conditions) - 1; $i++)
+				for($i = 2; $i < count(self::$conditions); $i++)
 				{
 					if(self::$conditions[$i]->isTrue())
 					{
