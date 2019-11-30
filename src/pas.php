@@ -110,9 +110,10 @@ abstract class pas
 	 * Runs pas's loop.
 	 * This should be the last call in your script.
 	 *
+	 * @param callable|null $condition_function An optional function to determine when this function should return.
 	 * @return void
 	 */
-	static function loop(): void
+	static function loop(?callable $condition_function = null): void
 	{
 		$loops = [];
 		$shortest_loop = 0;
@@ -171,7 +172,7 @@ abstract class pas
 				time_nanosleep(0, $remaining * 1000000000);
 			}
 		}
-		while(self::$loop_true);
+		while(self::$loop_true && (!is_callable($condition_function) || $condition_function()));
 	}
 
 	/**
