@@ -1,0 +1,18 @@
+{
+	"name": "hell-sh/pas",
+	"description": "A suite for working with PHP asynchronously.",
+	"homepage": "https://github.com/hell-sh/pas",
+	"type": "library",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"pas\\": "src/"
+		}
+	},
+	"require": {
+		"php": "^7.1"
+	},
+	"require-dev": {
+		"ext-curl": "*"
+	}
+}
