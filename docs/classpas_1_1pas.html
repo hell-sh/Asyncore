@@ -84,6 +84,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a61c22834b2d94ac383025542bc8e2aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b706d0799d7a560cda7ac3dca0129b2"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a1b706d0799d7a560cda7ac3dca0129b2">add</a> (callable $function, float $interval_seconds=0.001, bool $call_immediately=false)</td></tr>
 <tr class="separator:a1b706d0799d7a560cda7ac3dca0129b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa7fa3d5880e123b84872fae4d1d7038"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#aaa7fa3d5880e123b84872fae4d1d7038">addInessential</a> (callable $function, float $interval_seconds=0.001, bool $call_immediately=false)</td></tr>
+<tr class="separator:aaa7fa3d5880e123b84872fae4d1d7038"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a93cb4669ec17527a084cba27c709cb"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a0a93cb4669ec17527a084cba27c709cb">remove</a> (<a class="el" href="classpas_1_1Loop.html">Loop</a> $<a class="el" href="classpas_1_1pas.html#ace9c5ce9a5eadc39d38607b91fd91c18">loop</a>)</td></tr>
 <tr class="separator:a0a93cb4669ec17527a084cba27c709cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac677348a02966a5e1ae0125ed54a55e6"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#ac677348a02966a5e1ae0125ed54a55e6">whileLoop</a> (callable $condition_function)</td></tr>
@@ -143,6 +145,59 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Registers a function to be called every X seconds.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">callable</td><td class="paramname">$function</td><td></td></tr>
+    <tr><td class="paramtype">float</td><td class="paramname">$interval_seconds</td><td></td></tr>
+    <tr><td class="paramtype">bool</td><td class="paramname">$call_immediately</td><td>True if the function should be called immediately, false if the interval should expire first. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Loop.html">Loop</a> </dd></dl>
+
+</div>
+</div>
+<a id="aaa7fa3d5880e123b84872fae4d1d7038"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa7fa3d5880e123b84872fae4d1d7038">&#9670;&nbsp;</a></span>addInessential()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static pas\pas::addInessential </td>
+          <td>(</td>
+          <td class="paramtype">callable&#160;</td>
+          <td class="paramname"><em>$function</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>$interval_seconds</em> = <code>0.001</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>$call_immediately</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Registers a function to be called every X seconds if at least one other essential loop exists.</p>
+<dl class="section since"><dt>Since</dt><dd>1.2 </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype">callable</td><td class="paramname">$function</td><td></td></tr>
@@ -293,7 +348,7 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Used internally to initialize pas's default <a class="el" href="classpas_1_1Condition.html">Condition</a>. </p>
+<p>Used internally to initialize pas's default Conditions. </p>
 
 </div>
 </div>
