@@ -71,6 +71,20 @@ abstract class pas
 	}
 
 	/**
+	 * Registers a function to be called every X seconds if at least one other essential loop exists.
+	 *
+	 * @since 1.2
+	 * @param callable $function
+	 * @param float $interval_seconds
+	 * @param bool $call_immediately True if the function should be called immediately, false if the interval should expire first.
+	 * @return Loop
+	 */
+	static function addInessential(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): Loop
+	{
+		return self::$conditions[1]->add($function, $interval_seconds, $call_immediately);
+	}
+
+	/**
 	 * Removes the given loop from the default Condition.
 	 *
 	 * @deprecated Use Loop::remove(), instead.
@@ -124,20 +138,23 @@ abstract class pas
 			$start = microtime(true);
 			if(self::$recalculate_loops)
 			{
-				$loops = [];
-				foreach(self::$conditions as $i => $condition)
+				$loops = self::$conditions[0]->loops;
+				for($i = 2; $i < count(self::$conditions) - 1; $i++)
 				{
-					if(!$condition->isTrue())
+					if(self::$conditions[$i]->isTrue())
+					{
+						$loops = array_merge($loops, self::$conditions[$i]->loops);
+					}
+					else
 					{
 						unset(self::$conditions[$i]);
-						continue;
 					}
-					$loops = array_merge($loops, $condition->loops);
 				}
 				if(count($loops) == 0)
 				{
 					return;
 				}
+				$loops = array_merge($loops, self::$conditions[1]->loops);
 				$shortest_loop = $loops[0]->interval_seconds;
 				for($i = 1; $i < count($loops); $i++)
 				{
@@ -201,11 +218,12 @@ abstract class pas
 	}
 
 	/**
-	 * Used internally to initialize pas's default Condition.
+	 * Used internally to initialize pas's default Conditions.
 	 */
 	public static function init()
 	{
 		self::$conditions = [
+			new AlwaysTrueCondition(),
 			new AlwaysTrueCondition()
 		];
 	}
