@@ -28,25 +28,25 @@ class Condition
 	 * @param callable $function
 	 * @param float $interval_seconds
 	 * @param bool $call_immediately True if the function should be called immediately, false if the interval should expire first.
-	 * @return int The id of the loop. Can be used to remove the loop using ::remove() later.
+	 * @return Loop
 	 */
-	function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): int
+	function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): Loop
 	{
 		$loop = new Loop($this, $function, $interval_seconds, $call_immediately);
 		array_push($this->loops, $loop);
 		pas::$recalculate_loops = true;
-		return array_search($loop, $this->loops);
+		return $loop;
 	}
 
 	/**
-	 * Removes the loop with the given id.
+	 * Removes the given loop.
 	 *
-	 * @param int $id
+	 * @deprecated Use Loop::remove(), instead.
+	 * @param Loop $loop
 	 * @return void
 	 */
-	function remove(int $id): void
+	function remove(Loop $loop): void
 	{
-		unset($this->loops[$id]);
-		pas::$recalculate_loops = true;
+		$loop->remove();
 	}
 }

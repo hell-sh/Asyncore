@@ -63,22 +63,23 @@ abstract class pas
 	 * @param callable $function
 	 * @param float $interval_seconds
 	 * @param bool $call_immediately True if the function should be called immediately, false if the interval should expire first.
-	 * @return int The id of the loop. Can be used to remove the loop using ::remove() later.
+	 * @return Loop
 	 */
-	static function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): int
+	static function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): Loop
 	{
 		return self::$conditions[0]->add($function, $interval_seconds, $call_immediately);
 	}
 
 	/**
-	 * Removes the loop with the given id from the default Condition.
+	 * Removes the given loop from the default Condition.
 	 *
-	 * @param int $id
+	 * @deprecated Use Loop::remove(), instead.
+	 * @param Loop $loop
 	 * @return void
 	 */
-	static function remove(int $id): void
+	static function remove(Loop $loop): void
 	{
-		self::$conditions[0]->remove($id);
+		$loop->remove();
 	}
 
 	/**
@@ -184,7 +185,7 @@ abstract class pas
 	{
 		$mh = curl_multi_init();
 		curl_multi_add_handle($mh, $ch);
-		$i = pas::add(function() use (&$i, &$mh, &$ch, &$callback)
+		$loop = pas::add(function() use (&$loop, &$mh, &$ch, &$callback)
 		{
 			$active = 0;
 			curl_multi_exec($mh, $active);
@@ -193,7 +194,7 @@ abstract class pas
 				$callback(curl_multi_getcontent($ch));
 				curl_multi_remove_handle($mh, $ch);
 				curl_multi_close($mh);
-				pas::remove($i);
+				$loop->remove();
 			}
 		}, 0.005, true);
 	}
