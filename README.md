@@ -1,4 +1,4 @@
-# pas — php asynchronous suite
+# pas — php asynchronicity suite
 
 A suite for working with PHP asynchronously.
 
