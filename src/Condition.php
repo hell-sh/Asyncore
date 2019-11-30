@@ -32,7 +32,7 @@ class Condition
 	 */
 	function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): int
 	{
-		$loop = new Loop($function, $interval_seconds, $call_immediately);
+		$loop = new Loop($this, $function, $interval_seconds, $call_immediately);
 		array_push($this->loops, $loop);
 		pas::$recalculate_loops = true;
 		return array_search($loop, $this->loops);
