@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getnextline_12',['getNextLine',['../classpas_1_1stdin.html#ad5a8b6f59a98a3399f5940b9ab380363',1,'pas::stdin']]]
+  ['fire_12',['fire',['../classpas_1_1pas.html#a61c22834b2d94ac383025542bc8e2aa9',1,'pas::pas']]]
 ];
