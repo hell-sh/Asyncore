@@ -90,10 +90,14 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a0a93cb4669ec17527a084cba27c709cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac677348a02966a5e1ae0125ed54a55e6"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#ac677348a02966a5e1ae0125ed54a55e6">whileLoop</a> (callable $condition_function)</td></tr>
 <tr class="separator:ac677348a02966a5e1ae0125ed54a55e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41801d2f1d6a1279424f6e5326df4878"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a41801d2f1d6a1279424f6e5326df4878">condition</a> (callable $condition_function)</td></tr>
+<tr class="separator:a41801d2f1d6a1279424f6e5326df4878"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af49a7c49ea0c70ac2a0fc57ace7fdf34"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#af49a7c49ea0c70ac2a0fc57ace7fdf34">exitLoop</a> ()</td></tr>
 <tr class="separator:af49a7c49ea0c70ac2a0fc57ace7fdf34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace9c5ce9a5eadc39d38607b91fd91c18"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#ace9c5ce9a5eadc39d38607b91fd91c18">loop</a> (?callable $condition_function=null)</td></tr>
 <tr class="separator:ace9c5ce9a5eadc39d38607b91fd91c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5959f0da028f6136b11c1fbd9f430e82"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a5959f0da028f6136b11c1fbd9f430e82">timeout</a> (callable $callback, float $seconds)</td></tr>
+<tr class="separator:a5959f0da028f6136b11c1fbd9f430e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76eb92a5a1baa5a1c5908f2dc99b08cd"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a76eb92a5a1baa5a1c5908f2dc99b08cd">curl_exec</a> (&amp;$ch, callable $callback)</td></tr>
 <tr class="separator:a76eb92a5a1baa5a1c5908f2dc99b08cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae50f4a14fddf333454118abcf1345014"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#ae50f4a14fddf333454118abcf1345014">init</a> ()</td></tr>
@@ -210,6 +214,41 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a41801d2f1d6a1279424f6e5326df4878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41801d2f1d6a1279424f6e5326df4878">&#9670;&nbsp;</a></span>condition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static pas\pas::condition </td>
+          <td>(</td>
+          <td class="paramtype">callable&#160;</td>
+          <td class="paramname"><em>$condition_function</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Registers a <a class="el" href="classpas_1_1Condition.html">Condition</a> to contain loops until $condition_function returns false.</p>
+<dl class="section since"><dt>Since</dt><dd>1.5 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">callable</td><td class="paramname">$condition_function</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Condition.html">Condition</a> </dd></dl>
+
+</div>
+</div>
 <a id="a76eb92a5a1baa5a1c5908f2dc99b08cd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a76eb92a5a1baa5a1c5908f2dc99b08cd">&#9670;&nbsp;</a></span>curl_exec()</h2>
 
@@ -251,6 +290,7 @@ Static Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
@@ -493,6 +533,51 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a5959f0da028f6136b11c1fbd9f430e82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5959f0da028f6136b11c1fbd9f430e82">&#9670;&nbsp;</a></span>timeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static pas\pas::timeout </td>
+          <td>(</td>
+          <td class="paramtype">callable&#160;</td>
+          <td class="paramname"><em>$callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>$seconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Calls the given function in x seconds.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">callable</td><td class="paramname">$callback</td><td></td></tr>
+    <tr><td class="paramtype">float</td><td class="paramname">$seconds</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
 <a id="ac677348a02966a5e1ae0125ed54a55e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac677348a02966a5e1ae0125ed54a55e6">&#9670;&nbsp;</a></span>whileLoop()</h2>
 
@@ -516,10 +601,10 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Registers a <a class="el" href="classpas_1_1Condition.html">Condition</a>.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>Use pas::condition(), instead. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramtype">callable</td><td class="paramname">$condition_function</td><td>The function that must return true for nested loops to run. </td></tr>
+    <tr><td class="paramtype">callable</td><td class="paramname">$condition_function</td><td></td></tr>
   </table>
   </dd>
 </dl>
