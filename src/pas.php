@@ -97,12 +97,23 @@ abstract class pas
 	}
 
 	/**
-	 * Registers a Condition.
-	 *
-	 * @param callable $condition_function The function that must return true for nested loops to run.
+	 * @deprecated Use pas::condition(), instead.
+	 * @param callable $condition_function
 	 * @return Condition
 	 */
 	static function whileLoop(callable $condition_function): Condition
+	{
+		return self::condition($condition_function);
+	}
+
+	/**
+	 * Registers a Condition to contain loops until $condition_function returns false.
+	 *
+	 * @since 1.5
+	 * @param callable $condition_function
+	 * @return Condition
+	 */
+	static function condition(callable $condition_function): Condition
 	{
 		$condition = new Condition($condition_function);
 		array_push(self::$conditions, $condition);

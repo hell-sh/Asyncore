@@ -10,7 +10,7 @@ class Condition
 
 	/**
 	 * @param callable $condition_function
-	 * @see pas::whileLoop()
+	 * @see pas::condition()
 	 */
 	function __construct(callable $condition_function)
 	{
