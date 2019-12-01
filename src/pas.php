@@ -141,7 +141,7 @@ abstract class pas
 	static function loop(?callable $condition_function = null): void
 	{
 		$loops = [];
-		$shortest_loop = 0;
+		$shortest_loop_interval_seconds = 0;
 		self::$recalculate_loops = true;
 		self::$loop_true = true;
 		do
@@ -166,12 +166,12 @@ abstract class pas
 					return;
 				}
 				$loops = array_merge($loops, self::$conditions[1]->loops);
-				$shortest_loop = $loops[0]->interval_seconds;
+				$shortest_loop_interval_seconds = $loops[0]->interval_seconds;
 				for($i = 1; $i < count($loops); $i++)
 				{
-					if($loops[$i]->interval_seconds < $shortest_loop)
+					if($loops[$i]->interval_seconds < $shortest_loop_interval_seconds)
 					{
-						$shortest_loop = $loops[$i]->interval_seconds;
+						$shortest_loop_interval_seconds = $loops[$i]->interval_seconds;
 					}
 				}
 				self::$recalculate_loops = false;
@@ -189,25 +189,49 @@ abstract class pas
 			}
 			$time = microtime(true);
 			$on_time = true;
+			$shortest_loop_next_run = microtime(true) + $shortest_loop_interval_seconds;
 			foreach($loops as $loop)
 			{
-				if($loop->next_run < $time)
+				if($loop->next_run <= $time)
 				{
 					$loop->next_run += $loop->interval_seconds;
 					$running_late = ($loop->next_run < $time);
-					if($on_time && $running_late && $shortest_loop == $loop->interval_seconds)
+					if($shortest_loop_interval_seconds == $loop->interval_seconds)
 					{
-						$on_time = false;
+						if($on_time && $running_late)
+						{
+							$on_time = false;
+						}
+						else if($shortest_loop_next_run < $loop->next_run)
+						{
+							$shortest_loop_next_run = $loop->next_run;
+						}
 					}
 					($loop->function)($running_late);
 				}
 			}
-			if($on_time && ($remaining = ($shortest_loop - (microtime(true) - $start))) > 0)
+			if($on_time && (($remaining = $shortest_loop_next_run - $start) > 0))
 			{
-				time_nanosleep(0, $remaining * 1000000000);
+				time_nanosleep(floor($remaining), intval(($remaining - floor($remaining)) * 1000000000));
 			}
 		}
 		while(self::$loop_true && (!is_callable($condition_function) || $condition_function()));
+	}
+
+	/**
+	 * Calls the given function in x seconds.
+	 *
+	 * @param callable $callback
+	 * @param float $seconds
+	 * @return void
+	 */
+	public static function timeout(callable $callback, float $seconds): void
+	{
+		$loop = pas::add(function() use (&$callback, &$loop)
+		{
+			$loop->remove();
+			$callback();
+		}, $seconds, false);
 	}
 
 	/**
@@ -216,6 +240,7 @@ abstract class pas
 	 *
 	 * @param resource $ch
 	 * @param callable $callback
+	 * @return void
 	 */
 	public static function curl_exec(&$ch, callable $callback): void
 	{
