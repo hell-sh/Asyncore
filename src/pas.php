@@ -164,12 +164,19 @@ abstract class pas
 					}
 				}
 				self::$recalculate_loops = false;
-				$time = microtime(true);
 			}
 			else
 			{
-				$time = $start;
+				for($i = 2; $i < count(self::$conditions); $i++)
+				{
+					if(!self::$conditions[$i]->isTrue())
+					{
+						self::$recalculate_loops = true;
+						continue 2;
+					}
+				}
 			}
+			$time = microtime(true);
 			$on_time = true;
 			foreach($loops as $loop)
 			{
