@@ -266,8 +266,8 @@ abstract class pas
 	public static function init()
 	{
 		self::$conditions = [
-			new AlwaysTrueCondition(),
-			new AlwaysTrueCondition()
+			new Condition(function(){}),
+			new Condition(function(){})
 		];
 	}
 }
