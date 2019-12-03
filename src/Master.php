@@ -14,7 +14,7 @@ abstract class Master
 	 * @param callable $message_handler The function to be called when the master sends a message.
 	 * @return void
 	 */
-	public static function init(callable $message_handler): void
+	static function init(callable $message_handler): void
 	{
 		stream_set_blocking(STDIN, false);
 		pas::add(function() use (&$message_handler)
@@ -29,7 +29,7 @@ abstract class Master
 	 * @param $data
 	 * @return void
 	 */
-	public static function send($data): void
+	static function send($data): void
 	{
 		fwrite(STDERR, "\0".serialize($data)."\0");
 	}
