@@ -6,6 +6,11 @@ class Condition
 	 * @var $loops Loop[]
 	 */
 	public $loops = [];
+	/**
+	 * @var $false_handlers callable[]
+	 * @since 1.6
+	 */
+	public $false_handlers = [];
 	private $condition_function;
 
 	/**
@@ -20,6 +25,17 @@ class Condition
 	function isTrue(): bool
 	{
 		return ($this->condition_function)() === true;
+	}
+
+	/**
+	 * @param callable $handler
+	 * @return Condition $this
+	 * @since 1.6
+	 */
+	function onFalse(callable $handler): Condition
+	{
+		array_push($this->false_handlers, $handler);
+		return $this;
 	}
 
 	/**

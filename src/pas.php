@@ -145,6 +145,10 @@ abstract class pas
 					}
 					else
 					{
+						foreach(self::$conditions[$i]->false_handlers as $handler)
+						{
+							$handler();
+						}
 						unset(self::$conditions[$i]);
 					}
 				}
@@ -169,6 +173,11 @@ abstract class pas
 				{
 					if(!self::$conditions[$i]->isTrue())
 					{
+						foreach(self::$conditions[$i]->false_handlers as $handler)
+						{
+							$handler();
+						}
+						unset(self::$conditions[$i]);
 						self::$recalculate_loops = true;
 						continue 2;
 					}
