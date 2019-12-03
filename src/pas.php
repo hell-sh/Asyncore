@@ -1,5 +1,6 @@
 <?php
 namespace pas;
+use RuntimeException;
 abstract class pas
 {
 	public static $recalculate_loops = true;
@@ -241,6 +242,34 @@ abstract class pas
 	static function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): Loop
 	{
 		return self::$conditions[0]->add($function, $interval_seconds, $call_immediately);
+	}
+
+	/**
+	 * Creates a new PHP thread running the given file.
+	 *
+	 * @param string $worker_file The absolute path to the worker's php file.
+	 * @param callable $message_handler The function to be called when the worker sends a message.
+	 * @return Worker
+	 * @since 1.6
+	 */
+	static function worker(string $worker_file, callable $message_handler): Worker
+	{
+		$proc = proc_open("php \"".realpath($worker_file)."\"", [
+			0 => [
+				"pipe",
+				"r"
+			],
+			1 => STDOUT,
+			2 => [
+				"pipe",
+				"w"
+			]
+		], $pipes);
+		if(!is_resource($proc))
+		{
+			throw new RuntimeException("Failed to worker process");
+		}
+		return new Worker($proc, $pipes, $message_handler);
 	}
 
 	/**
