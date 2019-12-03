@@ -4,8 +4,8 @@
  */
 require __DIR__."/../vendor/autoload.php";
 use pas\
-{Master, pas};
-Master::init(function($data)
+{Master, pas, Worker};
+Worker::init(function($data)
 {
 	echo "Master -> Worker:\n";
 	var_dump($data);

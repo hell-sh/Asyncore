@@ -53,7 +53,7 @@ class Worker
 		self::evaluatePipe($this->pipes[2], $this->message_handler);
 	}
 
-	static function evaluatePipe($pipe, callable &$message_handler): void
+	private static function evaluatePipe($pipe, callable &$message_handler): void
 	{
 		$data = "";
 		while($message = fread($pipe, 4096))
@@ -94,6 +94,22 @@ class Worker
 			}
 			while($message);
 		}
+	}
+
+	/**
+	 * Initiates the worker script and registers a message handler.
+	 *
+	 * @param callable $message_handler The function to be called when the master sends a message.
+	 * @return void
+	 * @since 1.7
+	 */
+	static function init(callable $message_handler): void
+	{
+		stream_set_blocking(STDIN, false);
+		pas::add(function() use (&$message_handler)
+		{
+			self::evaluatePipe(STDIN, $message_handler);
+		}, 0.001);
 	}
 
 	/**

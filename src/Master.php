@@ -16,11 +16,7 @@ abstract class Master
 	 */
 	static function init(callable $message_handler): void
 	{
-		stream_set_blocking(STDIN, false);
-		pas::add(function() use (&$message_handler)
-		{
-			Worker::evaluatePipe(STDIN, $message_handler);
-		}, 0.001);
+		Worker::init($message_handler);
 	}
 
 	/**
