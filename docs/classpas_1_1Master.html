@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pas: pas\stdin Class Reference</title>
+<title>pas: pas\Master Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,28 +61,32 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacepas.html">pas</a></li><li class="navelem"><a class="el" href="classpas_1_1stdin.html">stdin</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacepas.html">pas</a></li><li class="navelem"><a class="el" href="classpas_1_1Master.html">Master</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="classpas_1_1stdin-members.html">List of all members</a>  </div>
+<a href="classpas_1_1Master-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">pas\stdin Class Reference</div>  </div>
+<div class="title">pas\Master Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a645a60e1743a2bd7e42cd2f0334e7fed"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1stdin.html#a645a60e1743a2bd7e42cd2f0334e7fed">init</a> (?callable $line_function=null, bool $essential=true)</td></tr>
-<tr class="separator:a645a60e1743a2bd7e42cd2f0334e7fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5a8b6f59a98a3399f5940b9ab380363"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1stdin.html#ad5a8b6f59a98a3399f5940b9ab380363">getNextLine</a> ()</td></tr>
-<tr class="separator:ad5a8b6f59a98a3399f5940b9ab380363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7198835b183de268fc68bdcbe378e47"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1Master.html#aa7198835b183de268fc68bdcbe378e47">init</a> (callable $message_handler)</td></tr>
+<tr class="separator:aa7198835b183de268fc68bdcbe378e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8904ab11a046ef0861b15e11bebde93b"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1Master.html#a8904ab11a046ef0861b15e11bebde93b">send</a> ($data)</td></tr>
+<tr class="separator:a8904ab11a046ef0861b15e11bebde93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad5a8b6f59a98a3399f5940b9ab380363"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5a8b6f59a98a3399f5940b9ab380363">&#9670;&nbsp;</a></span>getNextLine()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The class used by worker scripts to interact with their "master."</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classpas_1_1Worker.html">Worker</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.6 </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa7198835b183de268fc68bdcbe378e47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7198835b183de268fc68bdcbe378e47">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -91,9 +95,10 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static pas\stdin::getNextLine </td>
+          <td class="memname">static pas\Master::init </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">callable&#160;</td>
+          <td class="paramname"><em>$message_handler</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -103,19 +108,19 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Blocks until the user has submitted a line and then returns it.</p>
-<dl class="section return"><dt>Returns</dt><dd>string </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">BadMethodCallException</td><td>if pas\stdin was not initialized via pas\stdin::init() </td></tr>
+<p>Initiates the worker script and registers a message handler.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">callable</td><td class="paramname">$message_handler</td><td>The function to be called when the master sends a message. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
-<a id="a645a60e1743a2bd7e42cd2f0334e7fed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a645a60e1743a2bd7e42cd2f0334e7fed">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a8904ab11a046ef0861b15e11bebde93b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8904ab11a046ef0861b15e11bebde93b">&#9670;&nbsp;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -124,21 +129,11 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static pas\stdin::init </td>
+          <td class="memname">static pas\Master::send </td>
           <td>(</td>
-          <td class="paramtype">?callable&#160;</td>
-          <td class="paramname"><em>$line_function</em> = <code>null</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$data</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>$essential</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -147,11 +142,10 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Initializes pas's STDIN handling, if it wasn't already, enabling the "stdin_line" event and the <a class="el" href="classpas_1_1stdin.html#ad5a8b6f59a98a3399f5940b9ab380363">stdin::getNextLine()</a> function. After this, STDIN is in pas's hands, and there's no way out.</p>
+<p>Sends an object to the master.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramtype">callable&#160;|&#160;null</td><td class="paramname">$line_function</td><td>The function to be called when the user has submitted a line. </td></tr>
-    <tr><td class="paramtype">bool</td><td class="paramname">$essential</td><td>If false, the STDIN loop will be registered as inessential, so it doesn't prevent <a class="el" href="classpas_1_1pas.html#ace9c5ce9a5eadc39d38607b91fd91c18">pas::loop()</a> from returning. </td></tr>
+    <tr><td class="paramname">$data</td><td></td></tr>
   </table>
   </dd>
 </dl>

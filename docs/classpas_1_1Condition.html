@@ -73,15 +73,6 @@ $(function() {
 <div class="title">pas\Condition Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for pas\Condition:</div>
-<div class="dyncontent">
-<div class="center"><img src="classpas_1_1Condition__inherit__graph.png" border="0" usemap="#pas_0cCondition_inherit__map" alt="Inheritance graph"/></div>
-<map name="pas_0cCondition_inherit__map" id="pas_0cCondition_inherit__map">
-<area shape="rect" title=" " alt="" coords="39,5,140,32"/>
-<area shape="rect" href="classpas_1_1AlwaysTrueCondition.html" title=" " alt="" coords="5,80,173,107"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -89,6 +80,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a92574a973e0fadbc749bbd2fc4190f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7367305693b521aa1ebf2b87535fa50e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1Condition.html#a7367305693b521aa1ebf2b87535fa50e">isTrue</a> ()</td></tr>
 <tr class="separator:a7367305693b521aa1ebf2b87535fa50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab83abf9dd7e23ff8f2fbfc0cc31929f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1Condition.html#ab83abf9dd7e23ff8f2fbfc0cc31929f7">onFalse</a> (callable $handler)</td></tr>
+<tr class="separator:ab83abf9dd7e23ff8f2fbfc0cc31929f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99cc073f0d154d41946496423b42b40f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1Condition.html#a99cc073f0d154d41946496423b42b40f">add</a> (callable $function, float $interval_seconds=0.001, bool $call_immediately=false)</td></tr>
 <tr class="separator:a99cc073f0d154d41946496423b42b40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4b61ccabb673d1726545b80c19607cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1Condition.html#ae4b61ccabb673d1726545b80c19607cb">remove</a> (<a class="el" href="classpas_1_1Loop.html">Loop</a> $loop)</td></tr>
@@ -98,6 +91,8 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a87c5decac4a374f02cc24ce0728039e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1Condition.html#a87c5decac4a374f02cc24ce0728039e9">$loops</a> = []</td></tr>
 <tr class="separator:a87c5decac4a374f02cc24ce0728039e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addad22b6bb9e33371fb7bd3a87da5d73"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1Condition.html#addad22b6bb9e33371fb7bd3a87da5d73">$false_handlers</a> = []</td></tr>
+<tr class="separator:addad22b6bb9e33371fb7bd3a87da5d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a92574a973e0fadbc749bbd2fc4190f3d"></a>
@@ -185,7 +180,31 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classpas_1_1AlwaysTrueCondition.html#a8459268c8aa8a8dde6aa456891515244">pas\AlwaysTrueCondition</a>.</p>
+</div>
+</div>
+<a id="ab83abf9dd7e23ff8f2fbfc0cc31929f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab83abf9dd7e23ff8f2fbfc0cc31929f7">&#9670;&nbsp;</a></span>onFalse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pas\Condition::onFalse </td>
+          <td>(</td>
+          <td class="paramtype">callable&#160;</td>
+          <td class="paramname"><em>$handler</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">callable</td><td class="paramname">$handler</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Condition.html">Condition</a> $this </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.6 </dd></dl>
 
 </div>
 </div>
@@ -205,18 +224,32 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Removes the given loop.</p>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>Use <a class="el" href="classpas_1_1Loop.html#aa900727de1301ff15848cf45d5cae8c1">Loop::remove()</a>, instead. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype"><a class="el" href="classpas_1_1Loop.html">Loop</a></td><td class="paramname">$loop</td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Condition.html">Condition</a> $this </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>Use <a class="el" href="classpas_1_1Loop.html#aa900727de1301ff15848cf45d5cae8c1">Loop::remove()</a>, instead. </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="addad22b6bb9e33371fb7bd3a87da5d73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addad22b6bb9e33371fb7bd3a87da5d73">&#9670;&nbsp;</a></span>$false_handlers</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pas\Condition::$false_handlers = []</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a87c5decac4a374f02cc24ce0728039e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87c5decac4a374f02cc24ce0728039e9">&#9670;&nbsp;</a></span>$loops</h2>
 

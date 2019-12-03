@@ -82,8 +82,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ae78281d1d2f8a376303cebc89c2185ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61c22834b2d94ac383025542bc8e2aa9"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a61c22834b2d94ac383025542bc8e2aa9">fire</a> (string $event, array $parameters=[])</td></tr>
 <tr class="separator:a61c22834b2d94ac383025542bc8e2aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b706d0799d7a560cda7ac3dca0129b2"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a1b706d0799d7a560cda7ac3dca0129b2">add</a> (callable $function, float $interval_seconds=0.001, bool $call_immediately=false)</td></tr>
-<tr class="separator:a1b706d0799d7a560cda7ac3dca0129b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa7fa3d5880e123b84872fae4d1d7038"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#aaa7fa3d5880e123b84872fae4d1d7038">addInessential</a> (callable $function, float $interval_seconds=0.001, bool $call_immediately=false)</td></tr>
 <tr class="separator:aaa7fa3d5880e123b84872fae4d1d7038"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a93cb4669ec17527a084cba27c709cb"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a0a93cb4669ec17527a084cba27c709cb">remove</a> (<a class="el" href="classpas_1_1Loop.html">Loop</a> $<a class="el" href="classpas_1_1pas.html#ace9c5ce9a5eadc39d38607b91fd91c18">loop</a>)</td></tr>
@@ -98,6 +96,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ace9c5ce9a5eadc39d38607b91fd91c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5959f0da028f6136b11c1fbd9f430e82"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a5959f0da028f6136b11c1fbd9f430e82">timeout</a> (callable $callback, float $seconds)</td></tr>
 <tr class="separator:a5959f0da028f6136b11c1fbd9f430e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b706d0799d7a560cda7ac3dca0129b2"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a1b706d0799d7a560cda7ac3dca0129b2">add</a> (callable $function, float $interval_seconds=0.001, bool $call_immediately=false)</td></tr>
+<tr class="separator:a1b706d0799d7a560cda7ac3dca0129b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0614c5889e9a259de2fe004e8c23390c"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a0614c5889e9a259de2fe004e8c23390c">worker</a> (string $worker_file, callable $message_handler)</td></tr>
+<tr class="separator:a0614c5889e9a259de2fe004e8c23390c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76eb92a5a1baa5a1c5908f2dc99b08cd"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a76eb92a5a1baa5a1c5908f2dc99b08cd">curl_exec</a> (&amp;$ch, callable $callback)</td></tr>
 <tr class="separator:a76eb92a5a1baa5a1c5908f2dc99b08cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae50f4a14fddf333454118abcf1345014"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#ae50f4a14fddf333454118abcf1345014">init</a> ()</td></tr>
@@ -201,7 +203,6 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Registers a function to be called every X seconds if at least one other essential loop exists.</p>
-<dl class="section since"><dt>Since</dt><dd>1.2 </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype">callable</td><td class="paramname">$function</td><td></td></tr>
@@ -211,6 +212,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Loop.html">Loop</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.2 </dd></dl>
 
 </div>
 </div>
@@ -238,7 +240,6 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Registers a <a class="el" href="classpas_1_1Condition.html">Condition</a> to contain loops until $condition_function returns false.</p>
-<dl class="section since"><dt>Since</dt><dd>1.5 </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype">callable</td><td class="paramname">$condition_function</td><td></td></tr>
@@ -246,6 +247,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Condition.html">Condition</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.5 </dd></dl>
 
 </div>
 </div>
@@ -522,7 +524,6 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Removes the given loop from the default <a class="el" href="classpas_1_1Condition.html">Condition</a>.</p>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>Use <a class="el" href="classpas_1_1Loop.html#aa900727de1301ff15848cf45d5cae8c1">Loop::remove()</a>, instead. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype"><a class="el" href="classpas_1_1Loop.html">Loop</a></td><td class="paramname">$loop</td><td></td></tr>
@@ -530,6 +531,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>Use <a class="el" href="classpas_1_1Loop.html#aa900727de1301ff15848cf45d5cae8c1">Loop::remove()</a>, instead. </dd></dl>
 
 </div>
 </div>
@@ -601,7 +603,6 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>Use pas::condition(), instead. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype">callable</td><td class="paramname">$condition_function</td><td></td></tr>
@@ -609,6 +610,53 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Condition.html">Condition</a> </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>Use pas::condition(), instead. </dd></dl>
+
+</div>
+</div>
+<a id="a0614c5889e9a259de2fe004e8c23390c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0614c5889e9a259de2fe004e8c23390c">&#9670;&nbsp;</a></span>worker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static pas\pas::worker </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>$worker_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">callable&#160;</td>
+          <td class="paramname"><em>$message_handler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Creates a new PHP thread running the given file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">string</td><td class="paramname">$worker_file</td><td>The absolute path to the worker's php file. </td></tr>
+    <tr><td class="paramtype">callable</td><td class="paramname">$message_handler</td><td>The function to be called when the worker sends a message. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Worker.html">Worker</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.6 </dd></dl>
 
 </div>
 </div>
