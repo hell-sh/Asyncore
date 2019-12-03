@@ -42,11 +42,12 @@ class Condition
 	 * Removes the given loop.
 	 *
 	 * @param Loop $loop
-	 * @return void
+	 * @return Condition $this
 	 * @deprecated Use Loop::remove(), instead.
 	 */
-	function remove(Loop $loop): void
+	function remove(Loop $loop): Condition
 	{
 		$loop->remove();
+		return $this;
 	}
 }
