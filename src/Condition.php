@@ -2,11 +2,11 @@
 namespace pas;
 class Condition
 {
-	private $condition_function;
 	/**
 	 * @var $loops Loop[]
 	 */
 	public $loops = [];
+	private $condition_function;
 
 	/**
 	 * @param callable $condition_function
@@ -41,9 +41,9 @@ class Condition
 	/**
 	 * Removes the given loop.
 	 *
-	 * @deprecated Use Loop::remove(), instead.
 	 * @param Loop $loop
 	 * @return void
+	 * @deprecated Use Loop::remove(), instead.
 	 */
 	function remove(Loop $loop): void
 	{

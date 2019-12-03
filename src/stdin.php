@@ -41,7 +41,9 @@ abstract class stdin
 				{
 					pas::fire("stdin_line", [self::getLine()]);
 				}
-			}, 0.1, true
+			},
+			0.1,
+			true
 		]);
 		self::$initialized = true;
 	}
@@ -97,8 +99,8 @@ abstract class stdin
 	/**
 	 * Blocks until the user has submitted a line and then returns it.
 	 *
-	 * @throws BadMethodCallException if pas\stdin was not initialized via pas\stdin::init()
 	 * @return string
+	 * @throws BadMethodCallException if pas\stdin was not initialized via pas\stdin::init()
 	 */
 	static function getNextLine(): string
 	{

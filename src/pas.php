@@ -2,12 +2,12 @@
 namespace pas;
 abstract class pas
 {
+	public static $recalculate_loops = true;
 	private static $event_handlers = [];
 	/**
 	 * @var $conditions Condition[]
 	 */
 	private static $conditions;
-	public static $recalculate_loops = true;
 	private static $loop_true = true;
 
 	/**
@@ -58,26 +58,13 @@ abstract class pas
 	}
 
 	/**
-	 * Registers a function to be called every X seconds.
-	 *
-	 * @param callable $function
-	 * @param float $interval_seconds
-	 * @param bool $call_immediately True if the function should be called immediately, false if the interval should expire first.
-	 * @return Loop
-	 */
-	static function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): Loop
-	{
-		return self::$conditions[0]->add($function, $interval_seconds, $call_immediately);
-	}
-
-	/**
 	 * Registers a function to be called every X seconds if at least one other essential loop exists.
 	 *
-	 * @since 1.2
 	 * @param callable $function
 	 * @param float $interval_seconds
 	 * @param bool $call_immediately True if the function should be called immediately, false if the interval should expire first.
 	 * @return Loop
+	 * @since 1.2
 	 */
 	static function addInessential(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): Loop
 	{
@@ -87,9 +74,9 @@ abstract class pas
 	/**
 	 * Removes the given loop from the default Condition.
 	 *
-	 * @deprecated Use Loop::remove(), instead.
 	 * @param Loop $loop
 	 * @return void
+	 * @deprecated Use Loop::remove(), instead.
 	 */
 	static function remove(Loop $loop): void
 	{
@@ -97,9 +84,9 @@ abstract class pas
 	}
 
 	/**
-	 * @deprecated Use pas::condition(), instead.
 	 * @param callable $condition_function
 	 * @return Condition
+	 * @deprecated Use pas::condition(), instead.
 	 */
 	static function whileLoop(callable $condition_function): Condition
 	{
@@ -109,9 +96,9 @@ abstract class pas
 	/**
 	 * Registers a Condition to contain loops until $condition_function returns false.
 	 *
-	 * @since 1.5
 	 * @param callable $condition_function
 	 * @return Condition
+	 * @since 1.5
 	 */
 	static function condition(callable $condition_function): Condition
 	{
@@ -235,6 +222,19 @@ abstract class pas
 	}
 
 	/**
+	 * Registers a function to be called every X seconds.
+	 *
+	 * @param callable $function
+	 * @param float $interval_seconds
+	 * @param bool $call_immediately True if the function should be called immediately, false if the interval should expire first.
+	 * @return Loop
+	 */
+	static function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): Loop
+	{
+		return self::$conditions[0]->add($function, $interval_seconds, $call_immediately);
+	}
+
+	/**
 	 * Drop-in replacement for `curl_exec`.
 	 * Instead of blocking until the request has finished, this immediately returns and the result will be passed to the callback function when the request is finished.
 	 *
@@ -266,8 +266,12 @@ abstract class pas
 	public static function init()
 	{
 		self::$conditions = [
-			new Condition(function(){}),
-			new Condition(function(){})
+			new Condition(function()
+			{
+			}),
+			new Condition(function()
+			{
+			})
 		];
 	}
 }

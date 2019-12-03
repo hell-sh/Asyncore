@@ -1,7 +1,6 @@
 <?php
 require "vendor/autoload.php";
 use pas\pas;
-
 $ch = curl_init("http://ip.apimon.de/");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 echo "Sending request...";

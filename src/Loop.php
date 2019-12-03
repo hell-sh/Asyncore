@@ -2,10 +2,10 @@
 namespace pas;
 class Loop
 {
-	private $condition;
 	public $function;
 	public $interval_seconds;
 	public $next_run;
+	private $condition;
 
 	/**
 	 * @param Condition $condition
