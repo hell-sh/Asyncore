@@ -3,12 +3,12 @@ namespace pas;
 use RuntimeException;
 abstract class pas
 {
-	public static $recalculate_loops = true;
-	private static $event_handlers = [];
+	static $recalculate_loops = true;
 	/**
 	 * @var $conditions Condition[]
 	 */
 	static $conditions;
+	private static $event_handlers = [];
 	private static $loop_true = true;
 
 	/**
@@ -220,7 +220,7 @@ abstract class pas
 	 * @param float $seconds
 	 * @return void
 	 */
-	public static function timeout(callable $callback, float $seconds): void
+	static function timeout(callable $callback, float $seconds): void
 	{
 		$loop = pas::add(function() use (&$callback, &$loop)
 		{
@@ -278,7 +278,7 @@ abstract class pas
 	 * @param callable $callback
 	 * @return void
 	 */
-	public static function curl_exec(&$ch, callable $callback): void
+	static function curl_exec(&$ch, callable $callback): void
 	{
 		$mh = curl_multi_init();
 		curl_multi_add_handle($mh, $ch);
@@ -299,7 +299,7 @@ abstract class pas
 	/**
 	 * Used internally to initialize pas's default Conditions.
 	 */
-	public static function init()
+	static function init()
 	{
 		self::$conditions = [];
 		new Condition(function()
