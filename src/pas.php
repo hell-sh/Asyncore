@@ -235,11 +235,13 @@ abstract class pas
 	 * @param callable $function
 	 * @param float $interval_seconds
 	 * @param bool $call_immediately True if the function should be called immediately, false if the interval should expire first.
+	 * @param bool $essential False if the function should only be called if at least one other essential function exists.
 	 * @return Loop
+	 * @since 2.0 Added $essential
 	 */
-	static function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): Loop
+	static function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false, bool $essential = true): Loop
 	{
-		return self::$conditions[0]->add($function, $interval_seconds, $call_immediately);
+		return self::$conditions[$essential ? 0 : 1]->add($function, $interval_seconds, $call_immediately);
 	}
 
 	/**

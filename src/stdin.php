@@ -34,17 +34,13 @@ abstract class stdin
 		{
 			stream_set_blocking(STDIN, false);
 		}
-		call_user_func_array(pas::class."::add".($essential ? "" : "Inessential"), [
-			function()
+		pas::add(function()
+		{
+			while(self::hasLine())
 			{
-				while(self::hasLine())
-				{
-					pas::fire("stdin_line", [self::getLine()]);
-				}
-			},
-			0.1,
-			true
-		]);
+				pas::fire("stdin_line", [self::getLine()]);
+			}
+		}, 0.1, true, $essential);
 		self::$initialized = true;
 	}
 
