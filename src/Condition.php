@@ -15,11 +15,12 @@ class Condition
 
 	/**
 	 * @param callable $condition_function
-	 * @see pas::condition()
 	 */
 	function __construct(callable $condition_function)
 	{
 		$this->condition_function = $condition_function;
+		array_push(pas::$conditions, $this);
+		pas::$recalculate_loops = true;
 	}
 
 	function isTrue(): bool

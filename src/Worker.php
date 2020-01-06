@@ -29,7 +29,7 @@ class Worker
 		stream_set_blocking($pipes[2], false);
 		$this->pipes = $pipes;
 		$this->message_handler = $message_handler;
-		$this->running_condition = pas::condition(function()
+		$this->running_condition = new Condition(function()
 		{
 			return $this->isRunning();
 		});

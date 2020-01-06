@@ -8,7 +8,7 @@ abstract class pas
 	/**
 	 * @var $conditions Condition[]
 	 */
-	private static $conditions;
+	static $conditions;
 	private static $loop_true = true;
 
 	/**
@@ -87,7 +87,7 @@ abstract class pas
 	/**
 	 * @param callable $condition_function
 	 * @return Condition
-	 * @deprecated Use pas::condition(), instead.
+	 * @deprecated Use `new Condition($func)`, instead.
 	 */
 	static function whileLoop(callable $condition_function): Condition
 	{
@@ -100,13 +100,11 @@ abstract class pas
 	 * @param callable $condition_function
 	 * @return Condition
 	 * @since 1.5
+	 * @deprecated Starting in 1.7, `new Condition($func)` has the same effect as `pas::condition($func)` while being more intuitive.
 	 */
 	static function condition(callable $condition_function): Condition
 	{
-		$condition = new Condition($condition_function);
-		array_push(self::$conditions, $condition);
-		self::$recalculate_loops = true;
-		return $condition;
+		return new Condition($condition_function);
 	}
 
 	/**
@@ -303,14 +301,13 @@ abstract class pas
 	 */
 	public static function init()
 	{
-		self::$conditions = [
-			new Condition(function()
-			{
-			}),
-			new Condition(function()
-			{
-			})
-		];
+		self::$conditions = [];
+		new Condition(function()
+		{
+		});
+		new Condition(function()
+		{
+		});
 	}
 }
 
