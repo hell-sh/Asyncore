@@ -96,8 +96,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ace9c5ce9a5eadc39d38607b91fd91c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5959f0da028f6136b11c1fbd9f430e82"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a5959f0da028f6136b11c1fbd9f430e82">timeout</a> (callable $callback, float $seconds)</td></tr>
 <tr class="separator:a5959f0da028f6136b11c1fbd9f430e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b706d0799d7a560cda7ac3dca0129b2"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a1b706d0799d7a560cda7ac3dca0129b2">add</a> (callable $function, float $interval_seconds=0.001, bool $call_immediately=false)</td></tr>
-<tr class="separator:a1b706d0799d7a560cda7ac3dca0129b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7cdb34584e935b358065f61cdc1d7a7"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#aa7cdb34584e935b358065f61cdc1d7a7">add</a> (callable $function, float $interval_seconds=0.001, bool $call_immediately=false, bool $essential=true)</td></tr>
+<tr class="separator:aa7cdb34584e935b358065f61cdc1d7a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0614c5889e9a259de2fe004e8c23390c"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a0614c5889e9a259de2fe004e8c23390c">worker</a> (string $worker_file, callable $message_handler)</td></tr>
 <tr class="separator:a0614c5889e9a259de2fe004e8c23390c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76eb92a5a1baa5a1c5908f2dc99b08cd"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a76eb92a5a1baa5a1c5908f2dc99b08cd">curl_exec</a> (&amp;$ch, callable $callback)</td></tr>
@@ -109,10 +109,12 @@ Static Public Member Functions</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:af75f5ecdf7c6db4208c515661f6b0aa6"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#af75f5ecdf7c6db4208c515661f6b0aa6">$recalculate_loops</a> = true</td></tr>
 <tr class="separator:af75f5ecdf7c6db4208c515661f6b0aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55b8683e2d7d57819e13ce487aab22a8"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpas_1_1pas.html#a55b8683e2d7d57819e13ce487aab22a8">$conditions</a></td></tr>
+<tr class="separator:a55b8683e2d7d57819e13ce487aab22a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1b706d0799d7a560cda7ac3dca0129b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b706d0799d7a560cda7ac3dca0129b2">&#9670;&nbsp;</a></span>add()</h2>
+<a id="aa7cdb34584e935b358065f61cdc1d7a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7cdb34584e935b358065f61cdc1d7a7">&#9670;&nbsp;</a></span>add()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,7 +138,13 @@ Static Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>$call_immediately</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>$call_immediately</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>$essential</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -156,10 +164,12 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramtype">callable</td><td class="paramname">$function</td><td></td></tr>
     <tr><td class="paramtype">float</td><td class="paramname">$interval_seconds</td><td></td></tr>
     <tr><td class="paramtype">bool</td><td class="paramname">$call_immediately</td><td>True if the function should be called immediately, false if the interval should expire first. </td></tr>
+    <tr><td class="paramtype">bool</td><td class="paramname">$essential</td><td>False if the function should only be called if at least one other essential function exists. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Loop.html">Loop</a> </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>2.0 Added $essential </dd></dl>
 
 </div>
 </div>
@@ -248,6 +258,7 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Condition.html">Condition</a> </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.5 </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000004">Deprecated:</a></b></dt><dd>Starting in 1.7, <code>new <a class="el" href="classpas_1_1Condition.html">Condition</a>($func)</code> has the same effect as <code>pas::condition($func)</code> while being more intuitive. </dd></dl>
 
 </div>
 </div>
@@ -610,7 +621,7 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classpas_1_1Condition.html">Condition</a> </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>Use pas::condition(), instead. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>Use <code>new <a class="el" href="classpas_1_1Condition.html">Condition</a>($func)</code>, instead. </dd></dl>
 
 </div>
 </div>
@@ -661,6 +672,28 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a55b8683e2d7d57819e13ce487aab22a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55b8683e2d7d57819e13ce487aab22a8">&#9670;&nbsp;</a></span>$conditions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pas\pas::$conditions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af75f5ecdf7c6db4208c515661f6b0aa6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af75f5ecdf7c6db4208c515661f6b0aa6">&#9670;&nbsp;</a></span>$recalculate_loops</h2>
 
