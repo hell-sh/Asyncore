@@ -1,6 +1,6 @@
 # Asyncore
 
-Everything you need to write asynchronous PHP code
+Everything you need to write asynchronous PHP code.
 
 > `composer require hell-sh/asyncore`
 

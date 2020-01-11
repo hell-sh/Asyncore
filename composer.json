@@ -1,6 +1,6 @@
 {
 	"name": "hell-sh/asyncore",
-	"description": "A suite for working with PHP asynchronously.",
+	"description": "Everything you need to write asynchronous PHP code.",
 	"homepage": "https://github.com/hell-sh/Asyncore",
 	"type": "library",
 	"license": "MIT",
