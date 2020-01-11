@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getnextline_46',['getNextLine',['../classpas_1_1stdin.html#ad5a8b6f59a98a3399f5940b9ab380363',1,'pas::stdin']]]
+  ['getnextline_44',['getNextLine',['../classAsyncore_1_1stdin.html#a93f3eb81a1c8ae6590317097b2a862c8',1,'Asyncore::stdin']]]
 ];

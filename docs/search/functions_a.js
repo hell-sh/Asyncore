@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['send_55',['send',['../classpas_1_1Master.html#a8904ab11a046ef0861b15e11bebde93b',1,'pas\Master\send()'],['../classpas_1_1Worker.html#aed19bd3a95d88f773ecd17324612137e',1,'pas\Worker\send()']]]
+  ['send_53',['send',['../classAsyncore_1_1Master.html#a6850089f979ef0a07fc51a9ee7b4a0fd',1,'Asyncore\Master\send()'],['../classAsyncore_1_1Worker.html#a842789212ab223f3622d0312741cd32a',1,'Asyncore\Worker\send()']]]
 ];
