@@ -1,10 +1,9 @@
 <?php
-namespace pas;
+namespace Asyncore;
 /**
  * The class used by worker scripts to interact with their "master."
  *
  * @see Worker
- * @since 1.6
  */
 abstract class Master
 {

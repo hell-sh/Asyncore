@@ -1,8 +1,7 @@
 <?php
-namespace pas;
+namespace Asyncore;
 /**
  * @see Master
- * @since 1.6
  */
 class Worker
 {
@@ -20,7 +19,7 @@ class Worker
 	 * @param resource $proc
 	 * @param array $pipes
 	 * @param callable $message_handler
-	 * @see pas::worker()
+	 * @see Asyncore::worker
 	 */
 	function __construct(&$proc, array &$pipes, callable $message_handler)
 	{
@@ -101,12 +100,11 @@ class Worker
 	 *
 	 * @param callable $message_handler The function to be called when the master sends a message.
 	 * @return void
-	 * @since 1.7
 	 */
 	static function init(callable $message_handler): void
 	{
 		stream_set_blocking(STDIN, false);
-		pas::add(function() use (&$message_handler)
+		Asyncore::add(function() use (&$message_handler)
 		{
 			self::evaluatePipe(STDIN, $message_handler);
 		}, 0.001);

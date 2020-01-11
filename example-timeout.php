@@ -1,9 +1,9 @@
 <?php
-use pas\pas;
+use Asyncore\Asyncore;
 require "vendor/autoload.php";
 echo "Please wait...\n";
-pas::timeout(function() use (&$start)
+Asyncore::timeout(function() use (&$start)
 {
 	echo "Thanks for waiting!\n";
 }, 1);
-pas::loop();
+Asyncore::loop();

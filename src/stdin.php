@@ -1,5 +1,5 @@
 <?php /** @noinspection PhpUnused */
-namespace pas;
+namespace Asyncore;
 use BadMethodCallException;
 use RuntimeException;
 abstract class stdin
@@ -10,23 +10,23 @@ abstract class stdin
 
 	/**
 	 * Initializes pas's STDIN handling, if it wasn't already, enabling the "stdin_line" event and the stdin::getNextLine() function.
-	 * After this, STDIN is in pas's hands, and there's no way out.
+	 * After this, STDIN is in Asyncore's hands, and there's no way out.
 	 *
 	 * @param callable|null $line_function The function to be called when the user has submitted a line.
-	 * @param bool $essential If false, the STDIN loop will be registered as inessential, so it doesn't prevent pas::loop() from returning.
+	 * @param bool $essential If false, the STDIN loop will be registered as inessential, so it doesn't prevent Asyncore::loop() from returning.
 	 * @return void
 	 */
 	static function init(?callable $line_function = null, bool $essential = true): void
 	{
 		if($line_function !== null)
 		{
-			pas::on("stdin_line", $line_function);
+			Asyncore::on("stdin_line", $line_function);
 		}
 		if(self::$initialized)
 		{
 			return;
 		}
-		if(pas::isWindows())
+		if(Asyncore::isWindows())
 		{
 			self::openProcess();
 		}
@@ -34,11 +34,11 @@ abstract class stdin
 		{
 			stream_set_blocking(STDIN, false);
 		}
-		pas::add(function()
+		Asyncore::add(function()
 		{
 			while(self::hasLine())
 			{
-				pas::fire("stdin_line", [self::getLine()]);
+				Asyncore::fire("stdin_line", [self::getLine()]);
 			}
 		}, 0.1, true, $essential);
 		self::$initialized = true;
@@ -46,7 +46,7 @@ abstract class stdin
 
 	private static function openProcess(): void
 	{
-		self::$proc = proc_open("SET /P pas_input= & SET pas_input", [
+		self::$proc = proc_open("SET /P Asyncore_input= & SET Asyncore_input", [
 			0 => STDIN,
 			1 => [
 				"pipe",
@@ -65,7 +65,7 @@ abstract class stdin
 
 	private static function hasLine(): bool
 	{
-		if(pas::isWindows())
+		if(Asyncore::isWindows())
 		{
 			return !proc_get_status(self::$proc)["running"];
 		}
@@ -79,13 +79,13 @@ abstract class stdin
 
 	private static function getLine(): string
 	{
-		if(pas::isWindows())
+		if(Asyncore::isWindows())
 		{
 			if(!self::hasLine())
 			{
 				return null;
 			}
-			$res = trim(substr(stream_get_contents(self::$pipes[1]), 10));
+			$res = trim(substr(stream_get_contents(self::$pipes[1]), 15));
 			self::openProcess();
 			return $res;
 		}
@@ -96,13 +96,13 @@ abstract class stdin
 	 * Blocks until the user has submitted a line and then returns it.
 	 *
 	 * @return string
-	 * @throws BadMethodCallException if pas\stdin was not initialized via pas\stdin::init()
+	 * @throws BadMethodCallException if stdin was not initialized via stdin::init
 	 */
 	static function getNextLine(): string
 	{
 		if(!self::$initialized)
 		{
-			throw new BadMethodCallException("pas\stdin was not initialized via pas\stdin::init()");
+			throw new BadMethodCallException("stdin was not initialized via stdin::init");
 		}
 		while(!self::hasLine())
 		{

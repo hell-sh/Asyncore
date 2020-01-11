@@ -1,7 +1,7 @@
 <?php
-namespace pas;
+namespace Asyncore;
 use RuntimeException;
-abstract class pas
+abstract class Asyncore
 {
 	static $recalculate_loops = true;
 	/**
@@ -65,7 +65,6 @@ abstract class pas
 	 * @param float $interval_seconds
 	 * @param bool $call_immediately True if the function should be called immediately, false if the interval should expire first.
 	 * @return Loop
-	 * @since 1.2
 	 */
 	static function addInessential(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false): Loop
 	{
@@ -73,34 +72,10 @@ abstract class pas
 	}
 
 	/**
-	 * Removes the given loop from the default Condition.
-	 *
-	 * @param Loop $loop
-	 * @return void
-	 * @deprecated Use Loop::remove(), instead.
-	 */
-	static function remove(Loop $loop): void
-	{
-		$loop->remove();
-	}
-
-	/**
-	 * @param callable $condition_function
-	 * @return Condition
-	 * @deprecated Use `new Condition($func)`, instead.
-	 */
-	static function whileLoop(callable $condition_function): Condition
-	{
-		return self::condition($condition_function);
-	}
-
-	/**
 	 * Registers a Condition to contain loops until $condition_function returns false.
 	 *
 	 * @param callable $condition_function
 	 * @return Condition
-	 * @since 1.5
-	 * @deprecated Starting in 1.7, `new Condition($func)` has the same effect as `pas::condition($func)` while being more intuitive.
 	 */
 	static function condition(callable $condition_function): Condition
 	{
@@ -108,7 +83,7 @@ abstract class pas
 	}
 
 	/**
-	 * Causes the pas::loop() function to return, if it is currently running.
+	 * Causes the Asyncore::loop() function to return, if it is currently running.
 	 *
 	 * @return void
 	 */
@@ -118,7 +93,7 @@ abstract class pas
 	}
 
 	/**
-	 * Runs pas's loop.
+	 * Runs Asyncore's loop.
 	 * This should be the last call in your script.
 	 *
 	 * @param callable|null $condition_function An optional function to determine when this function should return.
@@ -222,7 +197,7 @@ abstract class pas
 	 */
 	static function timeout(callable $callback, float $seconds): void
 	{
-		$loop = pas::add(function() use (&$callback, &$loop)
+		$loop = self::add(function() use (&$callback, &$loop)
 		{
 			$loop->remove();
 			$callback();
@@ -237,7 +212,6 @@ abstract class pas
 	 * @param bool $call_immediately True if the function should be called immediately, false if the interval should expire first.
 	 * @param bool $essential False if the function should only be called if at least one other essential function exists.
 	 * @return Loop
-	 * @since 2.0 Added $essential
 	 */
 	static function add(callable $function, float $interval_seconds = 0.001, bool $call_immediately = false, bool $essential = true): Loop
 	{
@@ -250,7 +224,6 @@ abstract class pas
 	 * @param string $worker_file The absolute path to the worker's php file.
 	 * @param callable $message_handler The function to be called when the worker sends a message.
 	 * @return Worker
-	 * @since 1.6
 	 */
 	static function worker(string $worker_file, callable $message_handler): Worker
 	{
@@ -284,7 +257,7 @@ abstract class pas
 	{
 		$mh = curl_multi_init();
 		curl_multi_add_handle($mh, $ch);
-		$loop = pas::add(function() use (&$loop, &$mh, &$ch, &$callback)
+		$loop = self::add(function() use (&$loop, &$mh, &$ch, &$callback)
 		{
 			$active = 0;
 			curl_multi_exec($mh, $active);
@@ -299,7 +272,7 @@ abstract class pas
 	}
 
 	/**
-	 * Used internally to initialize pas's default Conditions.
+	 * Used internally to initialize Asyncore's default Conditions.
 	 */
 	static function init()
 	{
@@ -313,4 +286,4 @@ abstract class pas
 	}
 }
 
-pas::init();
+Asyncore::init();

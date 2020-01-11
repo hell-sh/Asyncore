@@ -1,16 +1,16 @@
 <?php
 require "vendor/autoload.php";
-use pas\pas;
+use Asyncore\Asyncore;
 $ch = curl_init("http://ip.apimon.de/");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 echo "Sending request...";
-pas::add(function()
+Asyncore::add(function()
 {
 	echo ".";
 }, 0.02);
-pas::curl_exec($ch, function($res)
+Asyncore::curl_exec($ch, function($res)
 {
 	echo "\nYour IP address: $res\n";
-	pas::exitLoop();
+	Asyncore::exitLoop();
 });
-pas::loop();
+Asyncore::loop();

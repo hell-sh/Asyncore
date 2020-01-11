@@ -3,8 +3,8 @@
  * The worker for ../example-worker.php
  */
 require __DIR__."/../vendor/autoload.php";
-use pas\
-{Master, pas, Worker};
+use Asyncore\
+{Asyncore, Master, Worker};
 Worker::init(function($data)
 {
 	echo "Master -> Worker:\n";
@@ -19,4 +19,4 @@ Worker::init(function($data)
 			Master::send($data[1] + $data[2]);
 	}
 });
-pas::loop();
+asyncore::loop();

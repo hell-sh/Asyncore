@@ -1,5 +1,5 @@
 <?php
-namespace pas;
+namespace Asyncore;
 class Condition
 {
 	/**
@@ -8,7 +8,6 @@ class Condition
 	public $loops = [];
 	/**
 	 * @var $false_handlers callable[]
-	 * @since 1.6
 	 */
 	public $false_handlers = [];
 	private $condition_function;
@@ -19,8 +18,8 @@ class Condition
 	function __construct(callable $condition_function)
 	{
 		$this->condition_function = $condition_function;
-		array_push(pas::$conditions, $this);
-		pas::$recalculate_loops = true;
+		array_push(Asyncore::$conditions, $this);
+		Asyncore::$recalculate_loops = true;
 	}
 
 	function isTrue(): bool
@@ -31,7 +30,6 @@ class Condition
 	/**
 	 * @param callable $handler
 	 * @return Condition $this
-	 * @since 1.6
 	 */
 	function onFalse(callable $handler): Condition
 	{
@@ -51,20 +49,7 @@ class Condition
 	{
 		$loop = new Loop($this, $function, $interval_seconds, $call_immediately);
 		array_push($this->loops, $loop);
-		pas::$recalculate_loops = true;
+		Asyncore::$recalculate_loops = true;
 		return $loop;
-	}
-
-	/**
-	 * Removes the given loop.
-	 *
-	 * @param Loop $loop
-	 * @return Condition $this
-	 * @deprecated Use Loop::remove(), instead.
-	 */
-	function remove(Loop $loop): Condition
-	{
-		$loop->remove();
-		return $this;
 	}
 }

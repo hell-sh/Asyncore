@@ -1,12 +1,12 @@
 {
-	"name": "hell-sh/pas",
+	"name": "hell-sh/asyncore",
 	"description": "A suite for working with PHP asynchronously.",
-	"homepage": "https://github.com/hell-sh/pas",
+	"homepage": "https://github.com/hell-sh/Asyncore",
 	"type": "library",
 	"license": "MIT",
 	"autoload": {
 		"psr-4": {
-			"pas\\": "src/"
+			"Asyncore\\": "src/"
 		}
 	},
 	"require": {

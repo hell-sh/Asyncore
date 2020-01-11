@@ -1,5 +1,5 @@
 <?php
-namespace pas;
+namespace Asyncore;
 class Loop
 {
 	public $function;
@@ -12,7 +12,7 @@ class Loop
 	 * @param callable $function
 	 * @param float $interval_seconds
 	 * @param bool $start_immediately
-	 * @see pas::add()
+	 * @see Asyncore::add()
 	 * @see Condition::add()
 	 */
 	function __construct(Condition $condition, callable $function, float $interval_seconds, bool $start_immediately)
@@ -33,7 +33,7 @@ class Loop
 		if($i !== false)
 		{
 			unset($this->condition->loops[$i]);
-			pas::$recalculate_loops = true;
+			Asyncore::$recalculate_loops = true;
 		}
 	}
 }
