@@ -9,7 +9,7 @@ abstract class stdin
 	private static $pipes;
 
 	/**
-	 * Initializes pas's STDIN handling, if it wasn't already, enabling the "stdin_line" event and the stdin::getNextLine() function.
+	 * Initializes Asyncore's STDIN handling, if it wasn't already, enabling the "stdin_line" event and the stdin::getNextLine() function.
 	 * After this, STDIN is in Asyncore's hands, and there's no way out.
 	 *
 	 * @param callable|null $line_function The function to be called when the user has submitted a line.
@@ -90,6 +90,17 @@ abstract class stdin
 			return $res;
 		}
 		return trim(fgets(STDIN));
+	}
+
+	/**
+	 * Returns whether Asyncore's STDIN handling was initialized.
+	 *
+	 * @return bool
+	 * @since 2.1
+	 */
+	static function isInitialized(): bool
+	{
+		return self::$initialized;
 	}
 
 	/**
