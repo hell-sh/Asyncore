@@ -111,15 +111,19 @@ abstract class Asyncore
 			if(self::$recalculate_loops)
 			{
 				$loops = self::$conditions[0]->loops;
-				for($i = 2; $i < count(self::$conditions); $i++)
+				foreach(self::$conditions as $i => $condition)
 				{
-					if(self::$conditions[$i]->isTrue())
+					if($i < 2)
 					{
-						$loops = array_merge($loops, self::$conditions[$i]->loops);
+						continue;
+					}
+					if($condition->isTrue())
+					{
+						$loops = array_merge($loops, $condition->loops);
 					}
 					else
 					{
-						foreach(self::$conditions[$i]->false_handlers as $handler)
+						foreach($condition->false_handlers as $handler)
 						{
 							$handler();
 						}
