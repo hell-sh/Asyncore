@@ -1,5 +1,5 @@
 <?php
-require "vendor/autoload.php";
+require __DIR__."/../vendor/autoload.php";
 use Asyncore\Asyncore;
 $ch = curl_init("http://ip.apimon.de/");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

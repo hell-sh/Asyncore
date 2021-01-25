@@ -1,6 +1,6 @@
 <?php
+require __DIR__."/../vendor/autoload.php";
 use Asyncore\Asyncore;
-require "vendor/autoload.php";
 echo "Please wait...\n";
 Asyncore::timeout(function() use (&$start)
 {

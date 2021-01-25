@@ -1,6 +1,6 @@
 <?php
 /**
- * The worker for ../example-worker.php
+ * The worker for /examples/multithreading.php
  */
 require __DIR__."/../vendor/autoload.php";
 use Asyncore\
@@ -19,4 +19,4 @@ Worker::init(function($data)
 			Master::send($data[1] + $data[2]);
 	}
 });
-asyncore::loop();
+Asyncore::loop();
