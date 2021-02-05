@@ -147,8 +147,12 @@ abstract class Asyncore
 			}
 			else
 			{
-				for($i = 2; $i < count(self::$conditions); $i++)
+				foreach(self::$conditions as $i => $condition)
 				{
+					if($i < 2)
+					{
+						continue;
+					}
 					if(!self::$conditions[$i]->isTrue())
 					{
 						foreach(self::$conditions[$i]->false_handlers as $handler)
