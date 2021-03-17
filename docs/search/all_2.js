@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['add_9',['add',['../classAsyncore_1_1Asyncore.html#a3fd774f616419e97bd613918d2740cae',1,'Asyncore\Asyncore\add()'],['../classAsyncore_1_1Condition.html#ae6b072b97862b8db0d8a6652827654a4',1,'Asyncore\Condition\add()']]],
-  ['addinessential_10',['addInessential',['../classAsyncore_1_1Asyncore.html#ad4d58f410ca5be262496d2f0838562a0',1,'Asyncore::Asyncore']]],
-  ['asyncore_11',['Asyncore',['../classAsyncore_1_1Asyncore.html',1,'Asyncore\Asyncore'],['../namespaceAsyncore.html',1,'Asyncore']]]
+  ['add_13',['add',['../classAsyncore_1_1Asyncore.html#a3fd774f616419e97bd613918d2740cae',1,'Asyncore\Asyncore\add()'],['../classAsyncore_1_1Condition.html#ae6b072b97862b8db0d8a6652827654a4',1,'Asyncore\Condition\add()']]],
+  ['addinessential_14',['addInessential',['../classAsyncore_1_1Asyncore.html#ad4d58f410ca5be262496d2f0838562a0',1,'Asyncore::Asyncore']]],
+  ['asyncore_15',['Asyncore',['../classAsyncore_1_1Asyncore.html',1,'Asyncore\Asyncore'],['../namespaceAsyncore.html',1,'Asyncore']]]
 ];
