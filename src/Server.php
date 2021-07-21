@@ -97,10 +97,17 @@ class Server
 	private function onTick(): void
 	{
 		// Accept
-		foreach($this->streams as $stream)
+		$read=$this->streams;
+		$write=[];
+		if(@stream_select($read, $write, $write, 0))
 		{
-			while(($client = @stream_socket_accept($stream, 0)) !== false)
+			foreach($this->streams as $stream)
 			{
+				if(!in_array($stream, $read))
+				{
+					continue;
+				}
+				$client = stream_socket_accept($stream, 1);
 				stream_set_blocking($client, false);
 				if(array_key_exists("ssl", stream_context_get_options($client)))
 				{
