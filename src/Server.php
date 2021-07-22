@@ -120,6 +120,7 @@ class Server
 			}
 		}
 		// Handle
+		$reindex = false;
 		foreach($this->handshaking_clients as $i => $client)
 		{
 			$ret = stream_socket_enable_crypto($client, true, STREAM_CRYPTO_METHOD_ANY_SERVER);
@@ -136,6 +137,11 @@ class Server
 				($this->client_handler)($client);
 			}
 			unset($this->handshaking_clients[$i]);
+			$reindex = true;
+		}
+		if($reindex)
+		{
+			$this->handshaking_clients = array_values($this->handshaking_clients);
 		}
 	}
 }
