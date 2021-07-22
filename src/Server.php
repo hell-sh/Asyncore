@@ -108,6 +108,10 @@ class Server
 					continue;
 				}
 				$client = stream_socket_accept($stream, 1);
+				if($client === false)
+				{
+					continue;
+				}
 				stream_set_blocking($client, false);
 				if(array_key_exists("ssl", stream_context_get_options($client)))
 				{
